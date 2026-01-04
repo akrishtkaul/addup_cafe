@@ -29,6 +29,12 @@ type Assignment = {
   isActive: boolean;
 };
 
+type ProgressData = {
+  status: string;
+  correctCount: number;
+  questionsAnswered: number;
+};
+
 type JoinedClassroom = {
   classroomId: string;
   name?: string;
@@ -37,8 +43,8 @@ type JoinedClassroom = {
   joinedAt: string;
   slot1?: Assignment;
   slot2?: Assignment;
-  slot1Progress?: { status: string; correctCount: number; questionsAnswered: number };
-  slot2Progress?: { status: string; correctCount: number; questionsAnswered: number };
+  slot1Progress?: ProgressData;
+  slot2Progress?: ProgressData;
 };
 
 export default function StudentDashboard() {
@@ -122,8 +128,8 @@ export default function StudentDashboard() {
               joinedAt: joinedData.joinedAt,
               slot1: slot1Data,
               slot2: slot2Data,
-              slot1Progress: slot1SubSnap?.exists() ? slot1SubSnap.data() : undefined,
-              slot2Progress: slot2SubSnap?.exists() ? slot2SubSnap.data() : undefined,
+              slot1Progress: slot1SubSnap?.exists() ? (slot1SubSnap.data() as ProgressData) : undefined,
+              slot2Progress: slot2SubSnap?.exists() ? (slot2SubSnap.data() as ProgressData) : undefined,
             });
           } catch (classErr: unknown) {
             console.error("Failed to load classroom", classroomId, classErr);

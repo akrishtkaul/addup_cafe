@@ -24,7 +24,8 @@ export default function HomePage() {
 
   // Scroll animation observer
   useEffect(() => {
-    setHeroVisible(true);
+    // Add a small delay so the animation is visible
+    const heroTimer = setTimeout(() => setHeroVisible(true), 100);
 
     const observer = new IntersectionObserver(
       (entries) => {
@@ -43,7 +44,10 @@ export default function HomePage() {
     const sections = document.querySelectorAll("#about, #help, #resources");
     sections.forEach((section) => observer.observe(section));
 
-    return () => observer.disconnect();
+    return () => {
+      clearTimeout(heroTimer);
+      observer.disconnect();
+    };
   }, []);
 
   return (
