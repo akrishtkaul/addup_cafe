@@ -15,9 +15,9 @@ export default function HomePage() {
   // Animate order items on mount
   useEffect(() => {
     const timers = [
-      setTimeout(() => setOrderVisible([true, false, false]), 300),
-      setTimeout(() => setOrderVisible([true, true, false]), 600),
-      setTimeout(() => setOrderVisible([true, true, true]), 900),
+      setTimeout(() => setOrderVisible([true, false, false]), 400),
+      setTimeout(() => setOrderVisible([true, true, false]), 700),
+      setTimeout(() => setOrderVisible([true, true, true]), 1000),
     ];
     return () => timers.forEach(clearTimeout);
   }, []);

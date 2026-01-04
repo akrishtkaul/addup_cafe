@@ -401,20 +401,38 @@ export default function StudentDashboard() {
                               {info.slot1?.restaurantName}
                             </div>
                             {info.slot1Progress ? (
-                              <div className="text-lg text-blue-800 mb-4 font-medium">
-                                Progress: {info.slot1Progress.correctCount}/{info.slot1Progress.questionsAnswered} correct
-                              </div>
+                              <>
+                                <div className="text-lg text-blue-800 mb-4 font-medium">
+                                  Progress: {info.slot1Progress.correctCount}/{info.slot1Progress.questionsAnswered} correct
+                                </div>
+                                {info.slot1Progress.status === "submitted" ? (
+                                  <div className="w-full h-14 bg-blue-200 text-blue-900 rounded-lg flex items-center justify-center text-lg font-semibold">
+                                    ✅ Completed
+                                  </div>
+                                ) : (
+                                  <Button
+                                    asChild
+                                    className="w-full h-14 bg-blue-600 hover:bg-blue-700 text-white text-lg font-semibold"
+                                  >
+                                    <Link href={slot1Href}>
+                                      Continue →
+                                    </Link>
+                                  </Button>
+                                )}
+                              </>
                             ) : (
-                              <div className="text-lg text-blue-800 mb-4 font-medium">Not started yet</div>
+                              <>
+                                <div className="text-lg text-blue-800 mb-4 font-medium">Not started yet</div>
+                                <Button
+                                  asChild
+                                  className="w-full h-14 bg-blue-600 hover:bg-blue-700 text-white text-lg font-semibold"
+                                >
+                                  <Link href={slot1Href}>
+                                    Start →
+                                  </Link>
+                                </Button>
+                              </>
                             )}
-                            <Button
-                              asChild
-                              className="w-full h-14 bg-blue-600 hover:bg-blue-700 text-white text-lg font-semibold"
-                            >
-                              <Link href={slot1Href}>
-                                {info.slot1Progress ? "Continue →" : "Start →"}
-                              </Link>
-                            </Button>
                           </div>
                         )}
 
@@ -424,20 +442,38 @@ export default function StudentDashboard() {
                               {info.slot2?.restaurantName}
                             </div>
                             {info.slot2Progress ? (
-                              <div className="text-lg text-green-800 mb-4 font-medium">
-                                Progress: {info.slot2Progress.correctCount}/{info.slot2Progress.questionsAnswered} correct
-                              </div>
+                              <>
+                                <div className="text-lg text-green-800 mb-4 font-medium">
+                                  Progress: {info.slot2Progress.correctCount}/{info.slot2Progress.questionsAnswered} correct
+                                </div>
+                                {info.slot2Progress.status === "submitted" ? (
+                                  <div className="w-full h-14 bg-green-200 text-green-900 rounded-lg flex items-center justify-center text-lg font-semibold">
+                                    ✅ Completed
+                                  </div>
+                                ) : (
+                                  <Button
+                                    asChild
+                                    className="w-full h-14 bg-green-600 hover:bg-green-700 text-white text-lg font-semibold"
+                                  >
+                                    <Link href={slot2Href}>
+                                      Continue →
+                                    </Link>
+                                  </Button>
+                                )}
+                              </>
                             ) : (
-                              <div className="text-lg text-green-800 mb-4 font-medium">Not started yet</div>
+                              <>
+                                <div className="text-lg text-green-800 mb-4 font-medium">Not started yet</div>
+                                <Button
+                                  asChild
+                                  className="w-full h-14 bg-green-600 hover:bg-green-700 text-white text-lg font-semibold"
+                                >
+                                  <Link href={slot2Href}>
+                                    Start →
+                                  </Link>
+                                </Button>
+                              </>
                             )}
-                            <Button
-                              asChild
-                              className="w-full h-14 bg-green-600 hover:bg-green-700 text-white text-lg font-semibold"
-                            >
-                              <Link href={slot2Href}>
-                                {info.slot2Progress ? "Continue →" : "Start →"}
-                              </Link>
-                            </Button>
                           </div>
                         )}
                       </div>
