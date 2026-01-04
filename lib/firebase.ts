@@ -1,13 +1,11 @@
-// Import the functions you need from the SDKs you need
-import { initializeApp } from "firebase/app";
+// lib/firebase.ts
 
-// TODO: Add SDKs for Firebase products that you want to use
-// https://firebase.google.com/docs/web/setup#available-libraries
+import { initializeApp, getApps, getApp } from "firebase/app";
 import { getFirestore } from "firebase/firestore";
+import { getAuth } from "firebase/auth";
 
-
-// Your web app's Firebase configuration
-// For Firebase JS SDK v7.20.0 and later, measurementId is optional
+// You can keep this hard-coded for now,
+// or later switch to env vars if you want.
 const firebaseConfig = {
   apiKey: "AIzaSyA-qbtDAO7U9LDN29mmC7LRtYrd498ppBE",
   authDomain: "add-up-cafe.firebaseapp.com",
@@ -15,9 +13,12 @@ const firebaseConfig = {
   storageBucket: "add-up-cafe.firebasestorage.app",
   messagingSenderId: "781366223288",
   appId: "1:781366223288:web:aeda47c7613362bb06af4d",
-  measurementId: "G-RELK5NRCBF"
+  measurementId: "G-RELK5NRCBF",
 };
 
-// Initialize Firebase
-const app = initializeApp(firebaseConfig);
+// Avoid re-initializing the app on hot reload in dev
+const app = !getApps().length ? initializeApp(firebaseConfig) : getApp();
+
+// Export both auth and db so other files can use them
+export const auth = getAuth(app);
 export const db = getFirestore(app);
