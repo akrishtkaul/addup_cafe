@@ -38,4 +38,4 @@ Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/bui
 =======
 # addup_cafe
 Gamified addition for special education students, and a way for teachers to give assignments and track their progress.
->>>>>>> 832933e89d8de54f146e08fe668eb09208f7617c
+
